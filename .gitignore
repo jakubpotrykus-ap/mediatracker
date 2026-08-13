@@ -1,0 +1,12 @@
+node_modules
+.pnpm-store
+.next
+.env
+.env.local
+coverage
+playwright-report
+test-results
+src/generated/prisma
+*.tsbuildinfo
+.DS_Store
+backups/*.sql*

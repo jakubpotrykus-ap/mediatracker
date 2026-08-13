@@ -1,0 +1,87 @@
+{
+  "meta": { "description": "Prywatny dziennik filmów, seriali i anime" },
+  "common": {
+    "save": "Zapisz", "cancel": "Anuluj", "delete": "Usuń", "edit": "Edytuj",
+    "loading": "Ładowanie…", "search": "Szukaj", "add": "Dodaj", "back": "Wróć", "unknown": "Brak danych",
+    "minutes": "min", "episodes": "odc.", "source": "Źródło", "year": "Rok", "genre": "Gatunek",
+    "success": "Zapisano zmiany.", "error": "Nie udało się wykonać operacji.", "confirmDelete": "Tej operacji nie można cofnąć.",
+    "pl": "Polski", "en": "English", "switchLanguage": "Zmień język", "close": "Zamknij", "menu": "Menu"
+  },
+  "nav": {
+    "home": "Start", "dashboard": "Pulpit", "discover": "Odkrywaj", "library": "Biblioteka", "profile": "Profil",
+    "settings": "Ustawienia", "labels": "Etykiety", "about": "O aplikacji", "logout": "Wyloguj"
+  },
+  "home": {
+    "eyebrow": "Twój czas. Twoje historie.", "title": "Pamiętaj, co oglądasz — bez liczenia odcinków.",
+    "description": "Filmy, seriale i anime w jednej spokojnej bibliotece. Zapisuj pełne obejrzenia, sezony i powroty po latach.",
+    "start": "Załóż konto", "login": "Zaloguj się", "featureTime": "Dokładny czas", "featureTimeText": "Czas wynika z historycznych zdarzeń, więc zmiana metadanych nie zmienia przeszłości.",
+    "featureCycles": "Pełne cykle", "featureCyclesText": "Nowy sezon nie odbiera ukończenia serialu sprzed lat.",
+    "featurePrivate": "Prywatnie domyślnie", "featurePrivateText": "Sam decydujesz, czy profil, statystyki i biblioteka będą publiczne.", "demoDays": "dni", "demoHours": "godz."
+  },
+  "auth": {
+    "loginTitle": "Witaj ponownie", "registerTitle": "Utwórz prywatną bibliotekę", "identifier": "Nazwa użytkownika lub e-mail",
+    "username": "Nazwa użytkownika", "email": "E-mail (opcjonalnie)", "password": "Hasło", "timezone": "Strefa czasowa",
+    "login": "Zaloguj się", "register": "Zarejestruj się", "noAccount": "Nie masz konta?", "hasAccount": "Masz już konto?",
+    "registrationDisabled": "Rejestracja jest obecnie wyłączona.", "invalid": "Nieprawidłowe dane logowania.", "taken": "Ta nazwa użytkownika lub e-mail są już zajęte.",
+    "passwordHint": "Co najmniej 10 znaków.", "processing": "Chwileczkę…"
+  },
+  "dashboard": {
+    "hello": "Dzień dobry, {name}", "subtitle": "Oto spokojny przegląd Twojego oglądania.", "totalTime": "Łączny czas",
+    "movies": "Unikalne filmy", "series": "Unikalne seriale", "anime": "Unikalne anime", "rewatches": "Powtórne obejrzenia",
+    "activity": "Ostatnia aktywność", "watching": "Obecnie oglądasz", "planned": "Na później", "monthly": "Czas miesięcznie",
+    "genres": "Najczęstsze gatunki", "empty": "Twoja historia zacznie się po dodaniu pierwszej produkcji.", "discover": "Znajdź pierwszą produkcję",
+    "unknownDate": "Data nieznana", "fullMovieWatches": "Pełne obejrzenia filmów", "cycles": "Ukończone cykle", "seasons": "Obejrzane sezony", "episodes": "Przybliżona liczba odcinków",
+    "timeBreakdown": "Podział czasu", "moviesTime": "Filmy", "seriesTime": "Seriale", "animeTime": "Anime", "yearly": "Czas rocznie", "favoriteByCount": "Gatunki według liczby produkcji", "favoriteByTime": "Gatunki według czasu", "mostWatched": "Najwięcej czasu przy produkcjach", "mostRewatched": "Najczęściej oglądane ponownie"
+  },
+  "discover": {
+    "title": "Odkrywaj", "subtitle": "Szukaj w TMDB i opcjonalnie AniList albo dodaj własny wpis.", "placeholder": "Tytuł polski, angielski lub oryginalny…",
+    "all": "Wszystkie", "movie": "Film", "series": "Serial", "anime": "Anime", "yearFrom": "Rok od", "yearTo": "Rok do",
+    "provider": "Dostawca: {provider}", "addLibrary": "Dodaj do biblioteki", "added": "Dodano do biblioteki.",
+    "empty": "Nie znaleziono wyników. Możesz utworzyć wpis ręcznie.", "start": "Wpisz co najmniej 2 znaki.",
+    "tmdbMissing": "TMDB nie jest skonfigurowane. Wyszukiwanie zewnętrzne jest niedostępne, ale ręczne wpisy nadal działają.",
+    "manualTitle": "Dodaj ręcznie", "manualDescription": "Wpis ręczny jest prywatny i należy tylko do Ciebie.", "titleField": "Tytuł",
+    "format": "Format", "category": "Kategoria", "general": "Ogólna", "runtime": "Czas filmu (min)", "genres": "Gatunki (oddzielone przecinkami)",
+    "seasonDurations": "Czasy sezonów w minutach (oddzielone przecinkami)", "create": "Utwórz i dodaj", "manualAdded": "Prywatny wpis został utworzony.",
+    "loadMore": "Następna strona", "sourceNotice": "Wyniki niepewnie dopasowane pozostają osobnymi rekordami."
+  },
+  "library": {
+    "title": "Moja biblioteka", "subtitle": "Wyszukiwanie działa wyłącznie na lokalnie zapisanych danych.", "query": "Szukaj w bibliotece",
+    "status": "Status", "label": "Etykieta", "type": "Typ", "filters": "Filtry", "apply": "Zastosuj", "all": "Wszystkie",
+    "yearFrom": "Rok od", "yearTo": "Rok do", "minWatches": "Min. obejrzeń", "activitySince": "Aktywność od", "sort": "Sortowanie", "sortActivity": "Ostatnia aktywność", "sortAdded": "Ostatnio dodane", "sortTitle": "Tytuł",
+    "empty": "Brak pozycji spełniających filtry.", "watches": "Obejrzenia: {count}", "details": "Szczegóły",
+    "PLAN_TO_WATCH": "Planuję obejrzeć", "WATCHING": "Oglądam", "COMPLETED": "Ukończone", "ON_HOLD": "Wstrzymane", "DROPPED": "Porzucone", "REWATCHING": "Oglądam ponownie"
+  },
+  "detail": {
+    "status": "Główny status", "labels": "Prywatne etykiety", "saveStatus": "Zapisz status i etykiety", "movieHistory": "Historia pełnych obejrzeń",
+    "addWatches": "Dodaj obejrzenia", "watchCount": "Liczba obejrzeń", "watchDates": "Daty (opcjonalnie)", "watchDatesHint": "RRRR-MM-DD, po jednej na obejrzenie", "unknownDates": "Brakujące daty zostaną oznaczone jako nieznane", "removeEvent": "Usuń błędne zdarzenie",
+    "cycles": "Cykle oglądania", "startCycle": "Rozpocznij nowy cykl", "cancelCycle": "Anuluj aktywny cykl", "includeSpecials": "Wymagaj sezonów specjalnych", "completeMany": "Obejrzałem cały serial X razy",
+    "season": "Sezon {number}", "watched": "Obejrzany", "watchDate": "Data (opcjonalnie)", "mark": "Oznacz jako obejrzany", "standalone": "Poza cyklem (nie zwiększa pełnych obejrzeń)",
+    "undo": "Cofnij", "active": "Aktywny", "completed": "Ukończony", "cancelled": "Anulowany", "cycle": "Cykl #{number}",
+    "durationEstimate": "Czas oszacowany", "durationExact": "Czas dokładny", "durationManual": "Czas poprawiony ręcznie", "durationMissing": "Brak czasu — uzupełnij ręcznie",
+    "setDuration": "Popraw czas sezonu", "refresh": "Odśwież metadane", "removeEntry": "Usuń z biblioteki", "source": "Źródło danych: {source}",
+    "recorded": "Zapisano {date}", "dateUnknown": "data oglądania nieznana", "noEvents": "Nie zapisano jeszcze obejrzeń."
+  },
+  "labels": {
+    "title": "Własne etykiety", "subtitle": "Prywatne, osobiste statusy przypisywane do wielu produkcji.", "name": "Nazwa", "color": "Stonowany kolor", "order": "Kolejność",
+    "create": "Utwórz etykietę", "empty": "Nie masz jeszcze własnych etykiet.", "mustWatch": "Np. mustWatch"
+  },
+  "profile": {
+    "title": "Podgląd profilu", "private": "Ten profil jest prywatny.", "privateText": "Właściciel nie udostępnił publicznie swoich danych.",
+    "statsHidden": "Statystyki są ukryte.", "libraryHidden": "Biblioteka jest ukryta.", "library": "Publiczna biblioteka", "topGenres": "Najczęściej oglądane gatunki",
+    "topMedia": "Najwięcej czasu", "publicUrl": "Publiczny adres", "about": "O użytkowniku"
+  },
+  "settings": {
+    "title": "Ustawienia", "account": "Konto", "privacy": "Prywatność", "language": "Język i strefa czasowa", "displayName": "Nazwa wyświetlana", "bio": "Krótki opis",
+    "profilePublic": "Profil publiczny", "showStats": "Pokazuj statystyki", "showLibrary": "Pokazuj bibliotekę", "timezone": "Strefa czasowa", "locale": "Język interfejsu",
+    "password": "Zmień hasło", "currentPassword": "Obecne hasło", "newPassword": "Nowe hasło", "changePassword": "Zmień hasło i wyloguj inne sesje",
+    "danger": "Strefa niebezpieczna", "deleteAccount": "Usuń konto i wszystkie prywatne dane", "deleteConfirm": "Wpisz DELETE", "deletePassword": "Potwierdź hasłem",
+    "saved": "Ustawienia zapisane.", "passwordChanged": "Hasło zmienione. Zaloguj się ponownie."
+  },
+  "about": {
+    "title": "O aplikacji i źródłach danych", "body": "MediaTracker przechowuje bibliotekę i historię oglądania lokalnie w Twojej instancji PostgreSQL.",
+    "tmdb": "This product uses the TMDB API but is not endorsed or certified by TMDB.",
+    "anilist": "AniList jest opcjonalnym źródłem metadanych anime. Włączenie wymaga sprawdzenia i zaakceptowania aktualnych warunków oraz, dla konkurencyjnego trackera, odpowiedniej zgody.",
+    "manual": "Ręczne wpisy pozostają prywatne dla tworzącego je użytkownika."
+  },
+  "notFound": { "title": "Nie znaleziono strony", "text": "Adres jest nieprawidłowy albo zasób nie jest dostępny.", "home": "Wróć na start" }
+}

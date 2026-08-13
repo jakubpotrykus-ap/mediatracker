@@ -1,0 +1,354 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AppLocale {
+  PL
+  EN
+}
+
+enum MediaFormat {
+  MOVIE
+  SERIES
+}
+
+enum MediaCategory {
+  GENERAL
+  ANIME
+}
+
+enum CatalogSource {
+  TMDB
+  ANILIST
+  MANUAL
+  TEST
+}
+
+enum DurationSource {
+  EXACT
+  ESTIMATED
+  MANUAL
+  UNKNOWN
+}
+
+enum LibraryStatus {
+  PLAN_TO_WATCH
+  WATCHING
+  COMPLETED
+  ON_HOLD
+  DROPPED
+  REWATCHING
+}
+
+enum CycleState {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+model User {
+  id                      String                       @id @default(cuid())
+  username                String                       @db.VarChar(32)
+  usernameNormalized      String                       @unique @db.VarChar(32)
+  email                   String?                      @db.VarChar(254)
+  emailNormalized         String?                      @unique @db.VarChar(254)
+  passwordHash            String                       @db.VarChar(255)
+  passwordVersion         Int                          @default(1)
+  displayName             String?                      @db.VarChar(80)
+  bio                     String?                      @db.VarChar(280)
+  image                   String?                      @db.VarChar(500)
+  createdAt               DateTime                     @default(now())
+  updatedAt               DateTime                     @updatedAt
+  settings                UserSettings?
+  mediaEntries            UserMediaEntry[]
+  movieWatchEvents        MovieWatchEvent[]
+  seasonWatchEvents       SeasonWatchEvent[]
+  viewingCycles           ViewingCycle[]
+  labels                  CustomLabel[]
+  manualMedia             MediaItem[]                  @relation("ManualMediaOwner")
+  seasonDurationOverrides UserSeasonDurationOverride[]
+
+  @@index([createdAt])
+  @@map("users")
+}
+
+model UserSettings {
+  userId        String    @id
+  locale        AppLocale @default(PL)
+  timezone      String    @default("Europe/Warsaw") @db.VarChar(64)
+  profilePublic Boolean   @default(false)
+  showStats     Boolean   @default(true)
+  showLibrary   Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_settings")
+}
+
+model MediaItem {
+  id                    String             @id @default(cuid())
+  format                MediaFormat
+  category              MediaCategory      @default(GENERAL)
+  source                CatalogSource
+  manualOwnerId         String?
+  titlePl               String?            @db.VarChar(300)
+  titleEn               String?            @db.VarChar(300)
+  titleOriginal         String             @db.VarChar(300)
+  descriptionPl         String?            @db.Text
+  descriptionEn         String?            @db.Text
+  releaseDate           DateTime?
+  releaseYear           Int?
+  posterUrl             String?            @db.VarChar(500)
+  backdropUrl           String?            @db.VarChar(500)
+  runtimeMinutes        Int?
+  runtimeSource         DurationSource     @default(UNKNOWN)
+  averageEpisodeMinutes Int?
+  adult                 Boolean            @default(false)
+  lastSyncedAt          DateTime?
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+  manualOwner           User?              @relation("ManualMediaOwner", fields: [manualOwnerId], references: [id], onDelete: Cascade)
+  externalIds           MediaExternalId[]
+  genres                MediaGenre[]
+  seasons               Season[]
+  userEntries           UserMediaEntry[]
+  movieWatchEvents      MovieWatchEvent[]
+  seasonWatchEvents     SeasonWatchEvent[]
+  viewingCycles         ViewingCycle[]
+
+  @@index([format, category, releaseYear])
+  @@index([manualOwnerId])
+  @@index([lastSyncedAt])
+  @@map("media_items")
+}
+
+model MediaExternalId {
+  id         String        @id @default(cuid())
+  mediaId    String
+  provider   CatalogSource
+  externalId String        @db.VarChar(100)
+  createdAt  DateTime      @default(now())
+  media      MediaItem     @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, externalId])
+  @@index([mediaId])
+  @@map("media_external_ids")
+}
+
+model Genre {
+  id     String       @id @default(cuid())
+  slug   String       @unique @db.VarChar(80)
+  namePl String       @db.VarChar(100)
+  nameEn String       @db.VarChar(100)
+  media  MediaGenre[]
+
+  @@map("genres")
+}
+
+model MediaGenre {
+  mediaId String
+  genreId String
+  media   MediaItem @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  genre   Genre     @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+  @@id([mediaId, genreId])
+  @@index([genreId, mediaId])
+  @@map("media_genres")
+}
+
+model Season {
+  id                    String                       @id @default(cuid())
+  mediaId               String
+  number                Int
+  name                  String?                      @db.VarChar(200)
+  episodeCount          Int?
+  durationMinutes       Int?
+  durationSource        DurationSource               @default(UNKNOWN)
+  isSpecial             Boolean                      @default(false)
+  externalProvider      CatalogSource?
+  externalId            String?                      @db.VarChar(100)
+  createdAt             DateTime                     @default(now())
+  updatedAt             DateTime                     @updatedAt
+  media                 MediaItem                    @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  watchEvents           SeasonWatchEvent[]
+  cycleSnapshots        ViewingCycleSeason[]
+  userDurationOverrides UserSeasonDurationOverride[]
+
+  @@unique([mediaId, number])
+  @@index([mediaId, isSpecial])
+  @@map("seasons")
+}
+
+model UserSeasonDurationOverride {
+  userId          String
+  seasonId        String
+  durationMinutes Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  season          Season   @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+
+  @@id([userId, seasonId])
+  @@index([seasonId])
+  @@map("user_season_duration_overrides")
+}
+
+model UserMediaEntry {
+  id             String           @id @default(cuid())
+  userId         String
+  mediaId        String
+  status         LibraryStatus    @default(PLAN_TO_WATCH)
+  addedAt        DateTime         @default(now())
+  lastActivityAt DateTime         @default(now())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  user           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  media          MediaItem        @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  labels         UserMediaLabel[]
+
+  @@unique([userId, mediaId])
+  @@index([userId, status, lastActivityAt])
+  @@index([userId, addedAt])
+  @@index([mediaId])
+  @@map("user_media_entries")
+}
+
+model MovieWatchEvent {
+  id                      String         @id @default(cuid())
+  userId                  String
+  mediaId                 String
+  watchedAt               DateTime?
+  watchedAtUnknown        Boolean        @default(false)
+  recordedAt              DateTime       @default(now())
+  durationMinutesSnapshot Int
+  durationSourceSnapshot  DurationSource
+  user                    User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  media                   MediaItem      @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@index([userId, watchedAt])
+  @@index([userId, mediaId, recordedAt])
+  @@map("movie_watch_events")
+}
+
+model ViewingCycle {
+  id                 String               @id @default(cuid())
+  userId             String
+  mediaId            String
+  cycleNumber        Int
+  state              CycleState           @default(ACTIVE)
+  startedAt          DateTime?
+  startedAtUnknown   Boolean              @default(false)
+  completedAt        DateTime?
+  completedAtUnknown Boolean              @default(false)
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  user               User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  media              MediaItem            @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  seasons            ViewingCycleSeason[]
+  watchEvents        SeasonWatchEvent[]
+
+  @@unique([userId, mediaId, cycleNumber])
+  @@index([userId, state, updatedAt])
+  @@index([mediaId])
+  @@map("viewing_cycles")
+}
+
+model ViewingCycleSeason {
+  id                      String            @id @default(cuid())
+  cycleId                 String
+  seasonId                String?
+  seasonNumberSnapshot    Int
+  seasonNameSnapshot      String?           @db.VarChar(200)
+  required                Boolean           @default(true)
+  episodeCountSnapshot    Int?
+  durationMinutesSnapshot Int?
+  durationSourceSnapshot  DurationSource
+  cycle                   ViewingCycle      @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  season                  Season?           @relation(fields: [seasonId], references: [id], onDelete: SetNull)
+  watchEvent              SeasonWatchEvent?
+
+  @@unique([cycleId, seasonNumberSnapshot])
+  @@index([seasonId])
+  @@map("viewing_cycle_seasons")
+}
+
+model SeasonWatchEvent {
+  id                      String              @id @default(cuid())
+  userId                  String
+  mediaId                 String
+  seasonId                String?
+  cycleId                 String?
+  cycleSeasonId           String?             @unique
+  watchedAt               DateTime?
+  watchedAtUnknown        Boolean             @default(false)
+  recordedAt              DateTime            @default(now())
+  seasonNumberSnapshot    Int
+  seasonNameSnapshot      String?             @db.VarChar(200)
+  episodeCountSnapshot    Int?
+  durationMinutesSnapshot Int
+  durationSourceSnapshot  DurationSource
+  user                    User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  media                   MediaItem           @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  season                  Season?             @relation(fields: [seasonId], references: [id], onDelete: SetNull)
+  cycle                   ViewingCycle?       @relation(fields: [cycleId], references: [id], onDelete: SetNull)
+  cycleSeason             ViewingCycleSeason? @relation(fields: [cycleSeasonId], references: [id], onDelete: SetNull)
+
+  @@index([userId, watchedAt])
+  @@index([userId, mediaId, recordedAt])
+  @@index([cycleId])
+  @@map("season_watch_events")
+}
+
+model CustomLabel {
+  id        String           @id @default(cuid())
+  userId    String
+  name      String           @db.VarChar(40)
+  color     String?          @db.VarChar(20)
+  sortOrder Int              @default(0)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  entries   UserMediaLabel[]
+
+  @@unique([userId, name])
+  @@index([userId, sortOrder])
+  @@map("custom_labels")
+}
+
+model UserMediaLabel {
+  entryId String
+  labelId String
+  entry   UserMediaEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  label   CustomLabel    @relation(fields: [labelId], references: [id], onDelete: Cascade)
+
+  @@id([entryId, labelId])
+  @@index([labelId, entryId])
+  @@map("user_media_labels")
+}
+
+model CatalogCache {
+  key       String   @id @db.VarChar(255)
+  value     Json
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([expiresAt])
+  @@map("catalog_cache")
+}
+
+model RateLimitBucket {
+  key         String   @id @db.VarChar(128)
+  count       Int      @default(1)
+  windowStart DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([windowStart])
+  @@map("rate_limit_buckets")
+}

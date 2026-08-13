@@ -1,0 +1,53 @@
+{
+  "meta": { "description": "A private movie, series and anime journal" },
+  "common": {
+    "save": "Save", "cancel": "Cancel", "delete": "Delete", "edit": "Edit", "loading": "Loading…", "search": "Search", "add": "Add", "back": "Back", "unknown": "Unknown",
+    "minutes": "min", "episodes": "eps.", "source": "Source", "year": "Year", "genre": "Genre", "success": "Changes saved.", "error": "The operation failed.", "confirmDelete": "This operation cannot be undone.",
+    "pl": "Polski", "en": "English", "switchLanguage": "Change language", "close": "Close", "menu": "Menu"
+  },
+  "nav": { "home": "Home", "dashboard": "Dashboard", "discover": "Discover", "library": "Library", "profile": "Profile", "settings": "Settings", "labels": "Labels", "about": "About", "logout": "Sign out" },
+  "home": {
+    "eyebrow": "Your time. Your stories.", "title": "Remember what you watch — without tracking episodes.", "description": "Movies, series and anime in one calm library. Record complete watches, seasons and returns after years.",
+    "start": "Create account", "login": "Sign in", "featureTime": "Accurate time", "featureTimeText": "Time comes from historical events, so metadata changes never rewrite the past.",
+    "featureCycles": "Complete cycles", "featureCyclesText": "A new season does not revoke a completion from years ago.", "featurePrivate": "Private by default", "featurePrivateText": "You decide whether your profile, stats and library become public.", "demoDays": "days", "demoHours": "hr"
+  },
+  "auth": {
+    "loginTitle": "Welcome back", "registerTitle": "Create a private library", "identifier": "Username or email", "username": "Username", "email": "Email (optional)", "password": "Password", "timezone": "Timezone",
+    "login": "Sign in", "register": "Register", "noAccount": "No account yet?", "hasAccount": "Already have an account?", "registrationDisabled": "Registration is currently disabled.",
+    "invalid": "Invalid credentials.", "taken": "That username or email is already in use.", "passwordHint": "At least 10 characters.", "processing": "One moment…"
+  },
+  "dashboard": {
+    "hello": "Hello, {name}", "subtitle": "Here is a calm overview of your viewing.", "totalTime": "Total time", "movies": "Unique movies", "series": "Unique series", "anime": "Unique anime", "rewatches": "Rewatches",
+    "activity": "Recent activity", "watching": "Currently watching", "planned": "For later", "monthly": "Monthly time", "genres": "Top genres", "empty": "Your history will begin after you add the first title.", "discover": "Find your first title",
+    "unknownDate": "Unknown date", "fullMovieWatches": "Complete movie watches", "cycles": "Completed cycles", "seasons": "Watched seasons", "episodes": "Approximate episodes", "timeBreakdown": "Time breakdown", "moviesTime": "Movies", "seriesTime": "Series", "animeTime": "Anime", "yearly": "Yearly time", "favoriteByCount": "Genres by title count", "favoriteByTime": "Genres by time", "mostWatched": "Most time spent", "mostRewatched": "Most rewatched"
+  },
+  "discover": {
+    "title": "Discover", "subtitle": "Search TMDB and optionally AniList, or add your own entry.", "placeholder": "Polish, English or original title…", "all": "All", "movie": "Movie", "series": "Series", "anime": "Anime",
+    "yearFrom": "Year from", "yearTo": "Year to", "provider": "Provider: {provider}", "addLibrary": "Add to library", "added": "Added to library.", "empty": "No results. You can create a manual entry.", "start": "Enter at least 2 characters.",
+    "tmdbMissing": "TMDB is not configured. External search is unavailable, but manual entries still work.", "manualTitle": "Add manually", "manualDescription": "A manual entry is private and belongs only to you.", "titleField": "Title",
+    "format": "Format", "category": "Category", "general": "General", "runtime": "Movie duration (min)", "genres": "Genres (comma-separated)", "seasonDurations": "Season durations in minutes (comma-separated)",
+    "create": "Create and add", "manualAdded": "Private entry created.", "loadMore": "Next page", "sourceNotice": "Uncertain matches remain separate provider records."
+  },
+  "library": {
+    "title": "My library", "subtitle": "Search uses only locally stored data.", "query": "Search library", "status": "Status", "label": "Label", "type": "Type", "filters": "Filters", "apply": "Apply", "all": "All", "yearFrom": "Year from", "yearTo": "Year to", "minWatches": "Minimum watches", "activitySince": "Activity since", "sort": "Sort", "sortActivity": "Recent activity", "sortAdded": "Recently added", "sortTitle": "Title", "empty": "No entries match these filters.",
+    "watches": "Watches: {count}", "details": "Details", "PLAN_TO_WATCH": "Plan to watch", "WATCHING": "Watching", "COMPLETED": "Completed", "ON_HOLD": "On hold", "DROPPED": "Dropped", "REWATCHING": "Rewatching"
+  },
+  "detail": {
+    "status": "Main status", "labels": "Private labels", "saveStatus": "Save status and labels", "movieHistory": "Complete watch history", "addWatches": "Add watches", "watchCount": "Watch count", "watchDates": "Dates (optional)", "watchDatesHint": "YYYY-MM-DD, one per watch", "unknownDates": "Missing dates will be marked unknown", "removeEvent": "Remove erroneous event",
+    "cycles": "Viewing cycles", "startCycle": "Start a new cycle", "cancelCycle": "Cancel active cycle", "includeSpecials": "Require specials", "completeMany": "I watched the whole series X times", "season": "Season {number}", "watched": "Watched", "watchDate": "Date (optional)", "mark": "Mark watched", "standalone": "Outside a cycle (does not increase full watches)",
+    "undo": "Undo", "active": "Active", "completed": "Completed", "cancelled": "Cancelled", "cycle": "Cycle #{number}", "durationEstimate": "Estimated duration", "durationExact": "Exact duration", "durationManual": "Manually corrected duration", "durationMissing": "Missing duration — enter it manually",
+    "setDuration": "Correct season duration", "refresh": "Refresh metadata", "removeEntry": "Remove from library", "source": "Data source: {source}", "recorded": "Recorded {date}", "dateUnknown": "watch date unknown", "noEvents": "No watches recorded yet."
+  },
+  "labels": { "title": "Custom labels", "subtitle": "Private personal statuses assigned to multiple titles.", "name": "Name", "color": "Muted color", "order": "Order", "create": "Create label", "empty": "You have no custom labels yet.", "mustWatch": "E.g. mustWatch" },
+  "profile": { "title": "Profile preview", "private": "This profile is private.", "privateText": "The owner has not shared their data publicly.", "statsHidden": "Statistics are hidden.", "libraryHidden": "Library is hidden.", "library": "Public library", "topGenres": "Top genres", "topMedia": "Most time", "publicUrl": "Public address", "about": "About" },
+  "settings": {
+    "title": "Settings", "account": "Account", "privacy": "Privacy", "language": "Language and timezone", "displayName": "Display name", "bio": "Short bio", "profilePublic": "Public profile", "showStats": "Show statistics", "showLibrary": "Show library",
+    "timezone": "Timezone", "locale": "Interface language", "password": "Change password", "currentPassword": "Current password", "newPassword": "New password", "changePassword": "Change password and sign out other sessions", "danger": "Danger zone",
+    "deleteAccount": "Delete account and all private data", "deleteConfirm": "Type DELETE", "deletePassword": "Confirm with password", "saved": "Settings saved.", "passwordChanged": "Password changed. Sign in again."
+  },
+  "about": {
+    "title": "About and data sources", "body": "MediaTracker stores the library and watch history locally in your PostgreSQL instance.", "tmdb": "This product uses the TMDB API but is not endorsed or certified by TMDB.",
+    "anilist": "AniList is an optional anime metadata source. Enabling it requires reviewing and accepting the current terms and, for a competing tracker, obtaining appropriate permission.", "manual": "Manual entries remain private to the user who created them."
+  },
+  "notFound": { "title": "Page not found", "text": "The address is invalid or the resource is unavailable.", "home": "Return home" }
+}
