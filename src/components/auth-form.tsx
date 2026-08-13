@@ -31,7 +31,17 @@ export function AuthForm({ mode, registrationEnabled = true }: { mode: "login" |
       });
       if (!response.ok) {
         const body = (await response.json()) as { error?: string };
-        setError(body.error === "IDENTITY_TAKEN" ? t("taken") : t("invalid"));
+        const messageKey =
+          body.error === "IDENTITY_TAKEN"
+            ? "taken"
+            : body.error === "INVALID_INPUT"
+              ? "registrationInvalid"
+              : body.error === "RATE_LIMITED"
+                ? "rateLimited"
+                : body.error === "REGISTRATION_DISABLED"
+                  ? "registrationDisabled"
+                  : "registrationFailed";
+        setError(t(messageKey));
         setPending(false);
         return;
       }

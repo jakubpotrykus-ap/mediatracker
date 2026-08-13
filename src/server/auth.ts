@@ -8,11 +8,13 @@ import { db } from "@/server/db";
 import { enforceRateLimit, rateLimitKey } from "@/server/security/rate-limit";
 import { loginSchema } from "@/server/validation";
 
+const useSecureCookies = new URL(env.APP_URL).protocol === "https:";
+
 export const authOptions: NextAuthOptions = {
   secret: env.AUTH_SECRET,
   session: { strategy: "jwt", maxAge: 60 * 60 * 24 * 7 },
   jwt: { maxAge: 60 * 60 * 24 * 7 },
-  useSecureCookies: process.env.NODE_ENV === "production",
+  useSecureCookies,
   pages: { signIn: "/login" },
   providers: [
     CredentialsProvider({
@@ -64,12 +66,12 @@ export const authOptions: NextAuthOptions = {
   },
   cookies: {
     sessionToken: {
-      name: process.env.NODE_ENV === "production" ? "__Secure-mediatracker.session" : "mediatracker.session",
+      name: useSecureCookies ? "__Secure-mediatracker.session" : "mediatracker.session",
       options: {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        secure: process.env.NODE_ENV === "production",
+        secure: useSecureCookies,
       },
     },
   },

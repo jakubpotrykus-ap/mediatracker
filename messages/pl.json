@@ -23,6 +23,7 @@
     "username": "Nazwa użytkownika", "email": "E-mail (opcjonalnie)", "password": "Hasło", "timezone": "Strefa czasowa",
     "login": "Zaloguj się", "register": "Zarejestruj się", "noAccount": "Nie masz konta?", "hasAccount": "Masz już konto?",
     "registrationDisabled": "Rejestracja jest obecnie wyłączona.", "invalid": "Nieprawidłowe dane logowania.", "taken": "Ta nazwa użytkownika lub e-mail są już zajęte.",
+    "registrationInvalid": "Sprawdź nazwę użytkownika, adres e-mail i wymagania hasła.", "registrationFailed": "Nie udało się utworzyć konta. Spróbuj ponownie.", "rateLimited": "Zbyt wiele prób. Spróbuj ponownie później.",
     "passwordHint": "Co najmniej 10 znaków.", "processing": "Chwileczkę…"
   },
   "dashboard": {

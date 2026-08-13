@@ -14,7 +14,9 @@
   "auth": {
     "loginTitle": "Welcome back", "registerTitle": "Create a private library", "identifier": "Username or email", "username": "Username", "email": "Email (optional)", "password": "Password", "timezone": "Timezone",
     "login": "Sign in", "register": "Register", "noAccount": "No account yet?", "hasAccount": "Already have an account?", "registrationDisabled": "Registration is currently disabled.",
-    "invalid": "Invalid credentials.", "taken": "That username or email is already in use.", "passwordHint": "At least 10 characters.", "processing": "One moment…"
+    "invalid": "Invalid credentials.", "taken": "That username or email is already in use.",
+    "registrationInvalid": "Check the username, email address, and password requirements.", "registrationFailed": "The account could not be created. Please try again.", "rateLimited": "Too many attempts. Please try again later.",
+    "passwordHint": "At least 10 characters.", "processing": "One moment…"
   },
   "dashboard": {
     "hello": "Hello, {name}", "subtitle": "Here is a calm overview of your viewing.", "totalTime": "Total time", "movies": "Unique movies", "series": "Unique series", "anime": "Unique anime", "rewatches": "Rewatches",

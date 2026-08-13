@@ -1,5 +1,6 @@
 import "server-only";
 import { appConfig } from "@/config";
+import { isSameOriginRequest } from "@/lib/security/same-origin";
 
 export function requestIdentity(request: Request) {
   if (!appConfig.trustProxy) return "direct";
@@ -8,9 +9,5 @@ export function requestIdentity(request: Request) {
 }
 
 export function assertSameOrigin(request: Request) {
-  const origin = request.headers.get("origin");
-  if (!origin) return;
-  const expected = new URL(appConfig.url);
-  const actual = new URL(origin);
-  if (actual.host !== expected.host || actual.protocol !== expected.protocol) throw new Error("INVALID_ORIGIN");
+  if (!isSameOriginRequest(request, appConfig.trustProxy)) throw new Error("INVALID_ORIGIN");
 }

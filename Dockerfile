@@ -12,7 +12,8 @@ RUN pnpm install --frozen-lockfile
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN pnpm db:generate && \
+RUN DATABASE_URL=postgresql://build:build@localhost:5432/build \
+    pnpm db:generate && \
     AUTH_SECRET=build-only-auth-secret-not-used-runtime-123456789 \
     DATABASE_URL=postgresql://build:build@localhost:5432/build \
     APP_URL=http://localhost:3000 \
@@ -21,7 +22,7 @@ RUN pnpm db:generate && \
 FROM base AS migrate
 ENV NODE_ENV=production
 COPY --from=deps /app/node_modules ./node_modules
-COPY package.json prisma.config.ts ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml prisma.config.ts ./
 COPY prisma ./prisma
 CMD ["pnpm", "db:deploy"]
 
