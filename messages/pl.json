@@ -39,7 +39,7 @@
     "all": "Wszystkie", "movie": "Film", "series": "Serial", "anime": "Anime", "yearFrom": "Rok od", "yearTo": "Rok do",
     "provider": "Dostawca: {provider}", "addLibrary": "Dodaj do biblioteki", "added": "Dodano do biblioteki.",
     "empty": "Nie znaleziono wyników. Możesz utworzyć wpis ręcznie.", "start": "Wpisz co najmniej 2 znaki.",
-    "tmdbMissing": "TMDB nie jest skonfigurowane. Wyszukiwanie zewnętrzne jest niedostępne, ale ręczne wpisy nadal działają.",
+    "tmdbMissing": "TMDB nie jest skonfigurowane. Wyszukiwanie zewnętrzne jest niedostępne, ale ręczne wpisy nadal działają.", "tmdbMissingAniListActive": "TMDB nie jest skonfigurowane. Wyszukiwanie anime przez AniList oraz ręczne wpisy nadal działają.",
     "manualTitle": "Dodaj ręcznie", "manualDescription": "Wpis ręczny jest prywatny i należy tylko do Ciebie.", "titleField": "Tytuł",
     "format": "Format", "category": "Kategoria", "general": "Ogólna", "runtime": "Czas filmu (min)", "genres": "Gatunki (oddzielone przecinkami)",
     "seasonDurations": "Czasy sezonów w minutach (oddzielone przecinkami)", "create": "Utwórz i dodaj", "manualAdded": "Prywatny wpis został utworzony.",

@@ -26,7 +26,7 @@
   "discover": {
     "title": "Discover", "subtitle": "Search TMDB and optionally AniList, or add your own entry.", "placeholder": "Polish, English or original title…", "all": "All", "movie": "Movie", "series": "Series", "anime": "Anime",
     "yearFrom": "Year from", "yearTo": "Year to", "provider": "Provider: {provider}", "addLibrary": "Add to library", "added": "Added to library.", "empty": "No results. You can create a manual entry.", "start": "Enter at least 2 characters.",
-    "tmdbMissing": "TMDB is not configured. External search is unavailable, but manual entries still work.", "manualTitle": "Add manually", "manualDescription": "A manual entry is private and belongs only to you.", "titleField": "Title",
+    "tmdbMissing": "TMDB is not configured. External search is unavailable, but manual entries still work.", "tmdbMissingAniListActive": "TMDB is not configured. AniList anime search and manual entries are still available.", "manualTitle": "Add manually", "manualDescription": "A manual entry is private and belongs only to you.", "titleField": "Title",
     "format": "Format", "category": "Category", "general": "General", "runtime": "Movie duration (min)", "genres": "Genres (comma-separated)", "seasonDurations": "Season durations in minutes (comma-separated)",
     "create": "Create and add", "manualAdded": "Private entry created.", "loadMore": "Next page", "sourceNotice": "Uncertain matches remain separate provider records."
   },

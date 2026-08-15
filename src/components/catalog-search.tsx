@@ -8,7 +8,7 @@ import type { CatalogMedia, CatalogPage } from "@/server/catalog/types";
 import { useToast } from "@/components/providers";
 import { localizedTitle } from "@/lib/domain/title";
 
-type ApiResponse = { pages: CatalogPage[]; status: { tmdbConfigured: boolean; manualAvailable: boolean } };
+type ApiResponse = { pages: CatalogPage[]; status: { tmdbConfigured: boolean; aniListEnabled: boolean; manualAvailable: boolean } };
 
 export function CatalogSearch() {
   const t = useTranslations("discover");
@@ -71,7 +71,7 @@ export function CatalogSearch() {
           <p className="muted self-center text-xs sm:pl-2">{t("sourceNotice")}</p>
         </div>
       </div>
-      {data && !data.status.tmdbConfigured ? <p className="mt-4 rounded-lg border border-[color:var(--border)] p-3 text-sm muted">{t("tmdbMissing")}</p> : null}
+      {data && !data.status.tmdbConfigured ? <p className="mt-4 rounded-lg border border-[color:var(--border)] p-3 text-sm muted">{t(data.status.aniListEnabled ? "tmdbMissingAniListActive" : "tmdbMissing")}</p> : null}
       {loading ? <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 xl:grid-cols-5">{Array.from({ length: 5 }, (_, index) => <div key={index} className="card h-80 animate-pulse" />)}</div> : null}
       {error ? <p role="alert" className="card mt-6 p-5 text-[color:var(--danger)]">{common("error")}</p> : null}
       {!loading && debounced.length < 2 ? <p className="muted py-12 text-center">{t("start")}</p> : null}
